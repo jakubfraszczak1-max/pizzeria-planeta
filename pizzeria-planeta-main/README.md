@@ -1,2 +1,0 @@
-# pizzeria-planeta
-pizzeria-planeta
