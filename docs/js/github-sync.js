@@ -7,7 +7,7 @@ export function buildGithubContentsPayload(content, message) {
 
 export function getDefaultGithubRepo() {
   return {
-    owner: 'AtomeXxxx',
+    owner: 'jakubfraszczak1-max',
     repo: 'pizzeria-planeta',
     branch: 'main'
   };

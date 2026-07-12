@@ -36,14 +36,24 @@ export async function uploadImageToGitHub({ file, token, repo, branch, onProgres
     method: 'PUT',
     headers: {
       Authorization: `Bearer ${token}`,
-      Accept: 'application/vnd.github+json'
+      Accept: 'application/vnd.github+json',
+      'X-GitHub-Api-Version': '2022-11-28'
     },
     body: JSON.stringify(payload)
   });
 
   if (!response.ok) {
     const errorText = await response.text();
-    throw new Error(`Nie udało się wgrać pliku: ${response.status} ${errorText}`);
+    let message = 'Nie udało się wgrać pliku.';
+
+    try {
+      const parsed = JSON.parse(errorText);
+      message = parsed.message || message;
+    } catch {
+      message = errorText || message;
+    }
+
+    throw new Error(`Nie udało się wgrać pliku: ${response.status} ${message}`);
   }
 
   const data = await response.json();
