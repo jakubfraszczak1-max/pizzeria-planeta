@@ -14,6 +14,8 @@
     .controls { display:flex; gap:0.5rem; margin-top:0.5rem; }
     .notice { margin-top:0.5rem; color: var(--color-text-muted); }
     .admin-menu-editor__toolbar { margin-bottom: 1rem; }
+    .admin-menu-editor__toolbar-actions { display:flex; flex-wrap:wrap; gap:0.75rem; align-items:center; margin-top:0.75rem; }
+    .admin-menu-editor__toolbar .btn { min-width: 180px; }
     .admin-menu-category { margin-bottom: 1rem; padding: 1rem; border: 1px solid var(--color-border); border-radius: 10px; background: var(--color-bg-elevated); }
     .admin-menu-category__header { display:flex; justify-content:space-between; align-items:flex-start; gap: 1rem; margin-bottom: 0.75rem; }
     .admin-menu-category__title-group { display:flex; flex-wrap:wrap; gap:0.75rem; }
@@ -31,6 +33,9 @@
     .admin-item-editor__grid input, .admin-item-editor__grid textarea, .admin-item-editor__grid select { background: var(--color-bg-elevated); color: var(--color-text); border: 1px solid var(--color-border); border-radius: 8px; padding:0.65rem; }
     .admin-item-editor__grid textarea { min-height: 90px; }
     .admin-item-editor__actions { display:flex; gap:0.75rem; margin-top:0.75rem; }
+    .admin-image-upload-form { display:grid; gap:0.75rem; padding:1rem; border:1px solid var(--color-border); border-radius:12px; background:var(--color-bg-elevated); }
+    .admin-image-upload-form input[type="file"] { padding:0.75rem; border:1px dashed var(--color-border); border-radius:10px; background:var(--color-bg); color:var(--color-text); }
+    .admin-image-upload-form__actions { display:flex; flex-wrap:wrap; gap:0.75rem; margin-top:0.25rem; }
   </style>
 </head>
 <body>

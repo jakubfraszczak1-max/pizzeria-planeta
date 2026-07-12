@@ -1,8 +1,15 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 
-import { addCategoryToMenu, addItemToCategory, saveItemForm, updateCategoryInMenu, updateItemInMenu } from './admin-menu.js';
+import { addCategoryToMenu, addItemToCategory, buildAdminMenuEditorMarkup, saveItemForm, updateCategoryInMenu, updateItemInMenu } from './admin-menu.js';
 import { setConfigOverrides } from './config.js';
+
+test('buildAdminMenuEditorMarkup renders a clearly visible upload button', () => {
+  const markup = buildAdminMenuEditorMarkup({ categories: [] });
+
+  assert.match(markup, /data-action="upload-image"/);
+  assert.match(markup, /class="btn btn-primary"/);
+});
 
 test('updateCategoryInMenu updates category name and icon without losing items', () => {
   const menu = {

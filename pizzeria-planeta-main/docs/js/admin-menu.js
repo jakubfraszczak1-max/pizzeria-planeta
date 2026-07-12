@@ -17,15 +17,19 @@ export async function initAdminMenuEditor() {
   container.dataset.adminEditorInitialized = '1';
   await refreshAdminMenuEditor();
 
-  container.addEventListener('click', (e) => {
-    const uploadBtn = e.target.closest('[data-action="upload-image"]');
+  document.addEventListener('click', (e) => {
+    const target = e.target instanceof Element ? e.target : null;
+    if (!target) return;
+
+    const uploadBtn = target.closest('[data-action="upload-image"]');
     if (uploadBtn) {
       e.preventDefault();
-      openImageUploadPanel(uploadBtn.dataset.target);
+      e.stopPropagation();
+      openImageUploadPanel(uploadBtn.dataset.target || 'admin-item-editor');
       return;
     }
 
-    const addBtn = e.target.closest('[data-action="add-item"]');
+    const addBtn = target.closest('[data-action="add-item"]');
     if (addBtn) {
       const categoryId = addBtn.dataset.categoryId;
       addItemToCategory(getMenu(), categoryId);
@@ -33,28 +37,28 @@ export async function initAdminMenuEditor() {
       return;
     }
 
-    const addCategoryBtn = e.target.closest('[data-action="add-category"]');
+    const addCategoryBtn = target.closest('[data-action="add-category"]');
     if (addCategoryBtn) {
       addCategoryToMenu(getMenu());
       rerender();
       return;
     }
 
-    const editBtn = e.target.closest('[data-action="edit-item"]');
+    const editBtn = target.closest('[data-action="edit-item"]');
     if (editBtn) {
       const itemId = editBtn.dataset.itemId;
       openItemEditor(itemId);
       return;
     }
 
-    const removeBtn = e.target.closest('[data-action="remove-item"]');
+    const removeBtn = target.closest('[data-action="remove-item"]');
     if (removeBtn) {
       const itemId = removeBtn.dataset.itemId;
       removeItem(itemId);
       return;
     }
 
-    const removeCategoryBtn = e.target.closest('[data-action="remove-category"]');
+    const removeCategoryBtn = target.closest('[data-action="remove-category"]');
     if (removeCategoryBtn) {
       const categoryId = removeCategoryBtn.dataset.categoryId;
       removeCategory(categoryId);
@@ -84,15 +88,15 @@ export async function initAdminMenuEditor() {
   });
 }
 
-function renderEditor(container, menu) {
+export function buildAdminMenuEditorMarkup(menu) {
   const safeMenu = normalizeMenu(menu);
-  const html = `
+  return `
     <div class="admin-menu-editor__toolbar">
       <h3>Edytor menu graficznego</h3>
       <p>Dodawaj, usuwaj i edytuj kategorie oraz pozycje. Zmiany są od razu podglądane, a zapis następuje jednym przyciskiem.</p>
       <div class="admin-menu-editor__toolbar-actions">
         <button class="btn btn-primary" type="button" data-action="add-category">+ Dodaj kategorię</button>
-        <button class="btn" type="button" data-action="upload-image" data-target="admin-item-editor">📷 Wgraj obraz</button>
+        <button class="btn btn-primary" type="button" data-action="upload-image" data-target="admin-item-editor">📷 Wgraj obraz</button>
       </div>
     </div>
     ${safeMenu.categories.map(category => `
@@ -134,8 +138,10 @@ function renderEditor(container, menu) {
       </section>
     `).join('')}
   `;
+}
 
-  container.innerHTML = html;
+function renderEditor(container, menu) {
+  container.innerHTML = buildAdminMenuEditorMarkup(menu);
   syncMenuTextarea();
 }
 
@@ -381,7 +387,7 @@ function openImageUploadPanel(targetId) {
         <span>Wgraj obraz do strony</span>
         <input type="file" name="imageFile" accept="image/*" required>
       </label>
-      <div class="admin-image-upload-form__actions" style="display:flex;gap:0.75rem;margin-top:0.75rem;">
+      <div class="admin-image-upload-form__actions">
         <button class="btn btn-primary" type="submit">Wgraj obraz</button>
         <button class="btn btn-secondary" type="button" onclick="this.closest('#${targetId || 'admin-item-editor'}').innerHTML=''">Anuluj</button>
       </div>
