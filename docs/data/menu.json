@@ -255,8 +255,9 @@
           "name": "Sprite 0,5L",
           "description": "",
           "price": 7,
-          "image": "https://images.unsplash.com/photo-1625773522523-d39b8c84c2c0?w=600&q=80",
-          "tags": []
+          "image": "https://raw.githubusercontent.com/jakubfraszczak1-max/pizzeria-planeta/main/docs/assets/uploads/1783851028588-sprite.webp",
+          "tags": [],
+          "sizes": []
         },
         {
           "id": "woda-05",
