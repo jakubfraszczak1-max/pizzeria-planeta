@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Pizzeria Planeta Elbląg - pizza, zapiekanki, sałatki z dowozem. Zamów online!">
+  <title>Pizzeria Planeta | Elbląg</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+
+  <style>
+    #loader {
+      position: fixed;
+      inset: 0;
+      background: #0d0d0d;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+    #loader.hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+    .loader-pizza {
+      font-size: 4rem;
+      animation: spin 2s linear infinite;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="loader">
+    <div class="loader-pizza">🍕</div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <a href="#" class="header__logo">
+        <img id="header-logo-img" src="assets/logo.svg" alt="Planeta">
+        <span>Planeta</span>
+      </a>
+
+      <nav class="header__nav" id="header-nav">
+        <a href="#menu">Menu</a>
+        <a href="#o-nas">O nas</a>
+        <a href="#galeria">Galeria</a>
+        <a href="#kontakt">Kontakt</a>
+      </nav>
+
+      <div class="header__actions">
+        <button class="cart-btn" id="cart-btn" aria-label="Koszyk">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+          </svg>
+          <span class="cart-btn__count" data-count="0">0</span>
+        </button>
+        <button class="menu-toggle" id="menu-toggle" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero__bg">
+      <img id="hero-bg-img" src="" alt="Pizza Planeta">
+      <div class="hero__overlay"></div>
+    </div>
+    <div class="hero__particles" id="hero-particles"></div>
+
+    <div class="container hero__content">
+      <div class="hero__badge">📍 Elbląg · Płk. Dąbka 140/4</div>
+      <h1 class="hero__title">
+        Witaj w<br><span id="hero-title-name">Pizzeria Planeta</span>
+      </h1>
+      <p class="hero__desc" id="hero-desc"></p>
+      <div class="hero__actions">
+        <a href="#menu" class="btn btn-primary">Zamów teraz</a>
+        <a href="#kontakt" class="btn btn-secondary">Kontakt</a>
+      </div>
+      <div class="hero__stats">
+        <div>
+          <div class="hero__stat-value">⭐ <span id="hero-rating">3.9</span></div>
+          <div class="hero__stat-label" id="hero-reviews">143 opinii</div>
+        </div>
+        <div>
+          <div class="hero__stat-value">🕐 <span id="delivery-time">45-60 min</span></div>
+          <div class="hero__stat-label">Czas dostawy</div>
+        </div>
+        <div>
+          <div class="hero__stat-value"><span id="min-order">30 zł</span></div>
+          <div class="hero__stat-label">Min. zamówienie</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero__scroll">
+      <div class="hero__scroll-icon"></div>
+      <span>Przewiń</span>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee-bar">
+    <div class="marquee-bar__track" id="marquee-track"></div>
+  </div>
+
+  <!-- MENU -->
+  <section class="section" id="menu">
+    <div class="container">
+      <h2 class="section-title reveal">Nasze Menu</h2>
+      <p class="section-subtitle reveal">Wybierz swoje ulubione dania i zamów z dostawą</p>
+
+      <div class="menu-filters reveal" id="menu-filters"></div>
+      <div id="menu-content"></div>
+    </div>
+  </section>
+
+  <!-- O NAS -->
+  <section class="section about" id="o-nas">
+    <div class="container">
+      <div class="about__grid">
+        <div class="about__image reveal-left">
+          <img id="about-img" src="" alt="O nas">
+        </div>
+        <div class="about__text reveal-right">
+          <h3>Pizza, która łączy Elbląg</h3>
+          <p>
+            Od lat serwujemy pizzę na cienkim, chrupiącym cieście z obfitymi składnikami.
+            Nasze zapiekanki i sałatki to idealny wybór na szybki lunch lub kolację z rodziną.
+          </p>
+          <p>
+            Organizujemy też imprezy okolicznościowe — wesela, urodziny i spotkania firmowe.
+            Na miejscu czeka na Ciebie dart i przyjazna atmosfera.
+          </p>
+          <div class="features-list" id="features-list"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERIA -->
+  <section class="section" id="galeria">
+    <div class="container">
+      <h2 class="section-title reveal">Galeria</h2>
+      <p class="section-subtitle reveal">Zobacz, co dla Ciebie przygotowujemy</p>
+      <div class="gallery-grid" id="gallery-grid"></div>
+    </div>
+  </section>
+
+  <!-- KONTAKT -->
+  <section class="section" id="kontakt">
+    <div class="container">
+      <h2 class="section-title reveal">Kontakt</h2>
+      <p class="section-subtitle reveal">Odwiedź nas lub zamów z dostawą</p>
+
+      <div class="contact-grid reveal">
+        <div class="contact-card">
+          <div class="contact-card__icon">📍</div>
+          <h3>Adres</h3>
+          <p id="contact-address"></p>
+        </div>
+        <div class="contact-card">
+          <div class="contact-card__icon">📞</div>
+          <h3>Telefon</h3>
+          <p><a id="contact-phone-link" href="#"><span id="contact-phone"></span></a></p>
+        </div>
+        <div class="contact-card">
+          <div class="contact-card__icon">✉️</div>
+          <h3>Email</h3>
+          <p><a id="contact-email-link" href="#"><span id="contact-email"></span></a></p>
+        </div>
+      </div>
+
+      <div class="hours-table reveal" id="hours-table"></div>
+
+      <div class="map-container reveal">
+        <iframe
+          src="https://maps.google.com/maps?q=P%C5%82k.+Stanis%C5%82awa+D%C4%85bka+140%2F4+Elbl%C4%85g&t=&z=15&ie=UTF8&iwloc=&output=embed"
+          allowfullscreen
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Mapa Pizzeria Planeta">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a href="#" class="header__logo">
+            <img src="assets/logo.svg" alt="Planeta" width="40" height="40">
+            <span>Planeta</span>
+          </a>
+          <p id="footer-desc"></p>
+        </div>
+        <div class="footer__links">
+          <h4 class="footer__title">Nawigacja</h4>
+          <a href="#menu">Menu</a>
+          <a href="#o-nas">O nas</a>
+          <a href="#galeria">Galeria</a>
+          <a href="#kontakt">Kontakt</a>
+        </div>
+        <div class="footer__links">
+          <h4 class="footer__title">Kontakt</h4>
+          <p id="footer-address"></p>
+          <a href="#" id="footer-phone-link"><span id="footer-phone"></span></a>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>&copy; 2026 Pizzeria Planeta Elbląg</span>
+        <span>Wszystkie prawa zastrzeżone</span>
+        <span>Strona stworzona przez <strong>Jakuba Frąszczaka</strong></span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- CART DRAWER -->
+  <div class="overlay" id="overlay"></div>
+  <aside class="cart-drawer" id="cart-drawer">
+    <div class="cart-drawer__header">
+      <h2 class="cart-drawer__title">Zamówienie</h2>
+      <button class="cart-drawer__close" id="cart-close" aria-label="Zamknij">✕</button>
+    </div>
+
+    <div class="cart-tabs">
+      <button class="cart-tab active" data-tab="cart">Koszyk</button>
+      <button class="cart-tab" data-tab="order">Dane</button>
+    </div>
+
+    <div class="cart-panel active" data-panel="cart">
+      <div class="cart-drawer__items" id="cart-items"></div>
+      <div class="cart-drawer__footer">
+        <div class="cart-summary">
+          <div class="cart-summary__row">
+            <span>Suma</span>
+            <span id="cart-subtotal">0,00 zł</span>
+          </div>
+          <div class="cart-summary__row">
+            <span>Dostawa</span>
+            <span id="cart-delivery">Gratis</span>
+          </div>
+          <div class="cart-summary__row total">
+            <span>Razem</span>
+            <span id="cart-total">0,00 zł</span>
+          </div>
+        </div>
+        <button class="btn btn-primary" onclick="document.querySelector('[data-tab=order]').click()">
+          Przejdź do zamówienia
+        </button>
+      </div>
+    </div>
+
+    <div class="cart-panel" data-panel="order">
+      <form class="order-form" id="order-form">
+        <h3 class="order-form__title">Dane zamówienia</h3>
+
+        <div class="order-type">
+          <button type="button" class="order-type__btn active" data-type="delivery">🚗 Dostawa</button>
+          <button type="button" class="order-type__btn" data-type="pickup">🏪 Odbiór</button>
+        </div>
+
+        <div class="input-group">
+          <label for="name">Imię i nazwisko *</label>
+          <input type="text" id="name" name="name" required placeholder="Jan Kowalski">
+        </div>
+
+        <div class="input-group">
+          <label for="phone">Telefon *</label>
+          <input type="tel" id="phone" name="phone" required placeholder="500 000 000">
+        </div>
+
+        <div class="input-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="jan@email.com">
+        </div>
+
+        <div class="input-group" id="address-group">
+          <label for="address">Adres dostawy *</label>
+          <input type="text" id="address" name="address" placeholder="ul. Przykładowa 1, Elbląg">
+        </div>
+
+        <div class="input-group payment-group" id="payment-group" style="display: none;">
+          <label>Forma płatności</label>
+          <div class="payment-options">
+            <label class="payment-option">
+              <input type="radio" name="paymentMethod" value="card" checked>
+              <span>Karta przy odbiorze</span>
+            </label>
+            <label class="payment-option">
+              <input type="radio" name="paymentMethod" value="blik">
+              <span>Blik</span>
+            </label>
+            <label class="payment-option">
+              <input type="radio" name="paymentMethod" value="gateway">
+              <span>Bramka płatności</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="input-group">
+          <label for="notes">Uwagi do zamówienia</label>
+          <textarea id="notes" name="notes" placeholder="Np. dzwonek nie działa, bez cebuli..."></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary" id="submit-order" disabled>
+          Złóż zamówienie
+        </button>
+      </form>
+    </div>
+  </aside>
+
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
