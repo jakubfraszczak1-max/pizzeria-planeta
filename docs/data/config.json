@@ -59,6 +59,13 @@
       "redirectUrl": ""
     }
   },
+  "events": [
+    {
+      "title": "Turniej darta",
+      "image": "assets/logo.svg",
+      "description": "Dołącz do naszego turnieju darta w każdą sobotę o 19:00. Nagrody i świetna zabawa!"
+    }
+  ],
   "social": {
     "facebook": "",
     "instagram": ""

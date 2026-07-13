@@ -87,6 +87,14 @@ const fallbackConfig = {
     }
   }
 };
+// sample events placeholder
+fallbackConfig.events = [
+  {
+    title: 'Turniej darta',
+    image: 'assets/logo.svg',
+    description: 'Dołącz do naszego turnieju darta w każdą sobotę o 19:00. Nagrody i świetna zabawa!'
+  }
+];
 
 const fallbackMenu = {
   categories: [

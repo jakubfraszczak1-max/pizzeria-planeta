@@ -1,4 +1,4 @@
-import { getMenu, formatPrice, getTagClass, getTagLabel } from './config.js';
+import { getMenu, getConfig, formatPrice, getTagClass, getTagLabel } from './config.js';
 import { addToCart } from './cart.js';
 import { showToast } from './toast.js';
 
@@ -12,8 +12,42 @@ export function renderMenu() {
 
   if (!container || !menu) return;
 
+  const cfg = getConfig();
+  const events = Array.isArray(cfg?.events) ? cfg.events : [];
+
+  renderEvents(events, document.getElementById('events-section'));
+
   renderFilters(menu.categories, filters);
   renderCategories(menu.categories, container);
+}
+
+function renderEvents(events, container) {
+  if (!container) return;
+  if (!events || events.length === 0) {
+    container.innerHTML = '';
+    return;
+  }
+
+  container.innerHTML = `
+    <div class="events-wrap">
+      <h3 class="section-title">Wydarzenia</h3>
+      <div class="events-grid">
+        ${events.map(ev => `
+          <article class="event-card">
+            <div class="event-card__img"><img src="${ev.image}" alt="${ev.title}" loading="lazy"></div>
+            <div class="event-card__body">
+              <h4>${ev.title}</h4>
+              <p>${ev.description}</p>
+            </div>
+          </article>
+        `).join('')}
+      </div>
+    </div>
+  `;
+
+  requestAnimationFrame(() => {
+    document.querySelectorAll('.event-card').forEach(el => el.classList.add('reveal'));
+  });
 }
 
 function renderFilters(categories, container) {

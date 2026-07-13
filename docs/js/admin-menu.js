@@ -1,4 +1,4 @@
-import { getMenu, setConfigOverrides } from './config.js';
+import { getMenu, setConfigOverrides, getConfig } from './config.js';
 import { buildImageUploadPath, uploadImageToGitHub } from './image-upload.js';
 import { getDefaultGithubRepo } from './github-sync.js';
 
@@ -26,6 +26,14 @@ export async function initAdminMenuEditor() {
       e.preventDefault();
       e.stopPropagation();
       openImageUploadPanel(uploadBtn.dataset.target || 'admin-item-editor');
+      return;
+    }
+
+    const eventsBtn = target.closest('[data-action="edit-events"]');
+    if (eventsBtn) {
+      e.preventDefault();
+      e.stopPropagation();
+      openEventsEditor(eventsBtn.dataset.target || 'admin-item-editor');
       return;
     }
 
@@ -96,7 +104,8 @@ export function buildAdminMenuEditorMarkup(menu) {
       <p>Dodawaj, usuwaj i edytuj kategorie oraz pozycje. Zmiany są od razu podglądane, a zapis następuje jednym przyciskiem.</p>
       <div class="admin-menu-editor__toolbar-actions">
         <button class="btn btn-primary" type="button" data-action="add-category">+ Dodaj kategorię</button>
-        <button class="btn btn-primary" type="button" data-action="upload-image" data-target="admin-item-editor">📷 Wgraj obraz</button>
+          <button class="btn btn-primary" type="button" data-action="upload-image" data-target="admin-item-editor">📷 Wgraj obraz</button>
+          <button class="btn btn-primary" type="button" data-action="edit-events" data-target="admin-item-editor">🎫 Wydarzenia</button>
       </div>
     </div>
     ${safeMenu.categories.map(category => `
@@ -374,6 +383,134 @@ function saveUploadedImages(images) {
   } catch (err) {
     console.warn('Nie udało się zapisać listy obrazów:', err);
   }
+}
+
+function getSavedEvents() {
+  try {
+    const cfg = getConfig();
+    return Array.isArray(cfg?.events) ? cfg.events : [];
+  } catch (err) {
+    console.warn('Nie udało się odczytać wydarzeń:', err);
+    return [];
+  }
+}
+
+function saveEvents(events) {
+  try {
+    const cfg = getConfig() || {};
+    const newSite = { ...cfg, events };
+    setConfigOverrides({ site: newSite });
+    return true;
+  } catch (err) {
+    console.error('Nie udało się zapisać wydarzeń:', err);
+    return false;
+  }
+}
+
+function openEventsEditor(targetId) {
+  const panel = document.getElementById(targetId || 'admin-item-editor');
+  if (!panel) return;
+
+  const events = getSavedEvents();
+
+  const listHtml = (events.length ? events.map((ev, i) => `
+    <div class="admin-event-card" data-index="${i}" style="padding:0.5rem;border:1px solid var(--color-border);border-radius:8px;display:grid;grid-template-columns:80px 1fr 120px;gap:0.5rem;align-items:center;">
+      <img src="${ev.image}" alt="${ev.title}" style="width:80px;height:56px;object-fit:cover;border-radius:8px;" />
+      <div>
+        <div style="font-weight:600">${ev.title}</div>
+        <div style="font-size:0.9rem;color:var(--color-text-muted)">${ev.description}</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:0.5rem;justify-content:center;">
+        <button class="btn btn-sm" data-action="edit-event" data-index="${i}">Edytuj</button>
+        <button class="btn btn-sm btn-secondary" data-action="remove-event" data-index="${i}">Usuń</button>
+      </div>
+    </div>
+  `).join('') : '<p style="color:var(--color-text-muted)">Brak wydarzeń. Dodaj pierwsze.</p>');
+
+  panel.innerHTML = `
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:0.5rem;margin-bottom:0.75rem;">
+      <h3>Edytor wydarzeń</h3>
+      <div>
+        <button class="btn btn-primary" id="add-event-btn">+ Dodaj wydarzenie</button>
+        <button class="btn" id="save-events-btn">Zapisz wydarzenia</button>
+      </div>
+    </div>
+    <div id="admin-events-list" style="display:grid;gap:0.5rem;">${listHtml}</div>
+    <div id="admin-event-editor" style="margin-top:0.75rem;"></div>
+  `;
+
+  panel.querySelector('#add-event-btn')?.addEventListener('click', () => {
+    openEventForm(panel, null);
+  });
+
+  panel.querySelector('#save-events-btn')?.addEventListener('click', () => {
+    const items = Array.from(panel.querySelectorAll('.admin-event-card')).map(card => {
+      const index = Number(card.dataset.index);
+      return events[index];
+    }).filter(Boolean);
+    saveEvents(items);
+    alert('Wydarzenia zapisane.');
+    openEventsEditor(targetId);
+  });
+
+  panel.querySelectorAll('[data-action="edit-event"]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const idx = Number(btn.dataset.index);
+      openEventForm(panel, idx);
+    });
+  });
+
+  panel.querySelectorAll('[data-action="remove-event"]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const idx = Number(btn.dataset.index);
+      events.splice(idx, 1);
+      saveEvents(events);
+      openEventsEditor(targetId);
+    });
+  });
+}
+
+function openEventForm(panel, index) {
+  const events = getSavedEvents();
+  const ev = typeof index === 'number' && events[index] ? events[index] : { title: '', image: '', description: '' };
+  const editor = panel.querySelector('#admin-event-editor');
+  if (!editor) return;
+
+  editor.innerHTML = `
+    <form id="event-form">
+      <label style="display:block;margin-bottom:0.5rem;"><span>Tytuł</span><input name="title" value="${ev.title}" required></label>
+      <label style="display:block;margin-bottom:0.5rem;"><span>Adres obrazka</span><input name="image" value="${ev.image}"></label>
+      <label style="display:block;margin-bottom:0.5rem;"><span>Opis</span><textarea name="description">${ev.description}</textarea></label>
+      <div style="display:flex;gap:0.5rem;">
+        <button class="btn btn-primary" type="submit">Zapisz</button>
+        <button class="btn" type="button" id="cancel-event-btn">Anuluj</button>
+      </div>
+    </form>
+  `;
+
+  const form = editor.querySelector('#event-form');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const formData = new FormData(form);
+    const newEvent = {
+      title: formData.get('title')?.toString() || '',
+      image: formData.get('image')?.toString() || '',
+      description: formData.get('description')?.toString() || ''
+    };
+
+    const eventsList = getSavedEvents();
+    if (typeof index === 'number' && eventsList[index]) {
+      eventsList[index] = newEvent;
+    } else {
+      eventsList.unshift(newEvent);
+    }
+    saveEvents(eventsList);
+    openEventsEditor(panel.id || 'admin-item-editor');
+  });
+
+  editor.querySelector('#cancel-event-btn')?.addEventListener('click', () => {
+    editor.innerHTML = '';
+  });
 }
 
 function openImageUploadPanel(targetId) {
