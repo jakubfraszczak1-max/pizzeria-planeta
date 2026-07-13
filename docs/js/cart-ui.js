@@ -90,6 +90,13 @@ function togglePaymentField() {
       if (defaultPayment) defaultPayment.checked = true;
     }
   }
+
+  if (orderType === 'delivery') {
+    const paymentGroup = document.getElementById('payment-group');
+    if (paymentGroup) {
+      paymentGroup.style.display = 'none';
+    }
+  }
 }
 
 function renderCart() {
@@ -183,7 +190,7 @@ async function handleSubmit(e) {
     type: orderType,
     paymentMethod: orderType === 'pickup'
       ? form.querySelector('input[name="paymentMethod"]:checked')?.value || 'card'
-      : '',
+      : 'delivery',
     items: cart,
     totals: getCartTotal(config?.delivery)
   };

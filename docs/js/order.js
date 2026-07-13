@@ -6,6 +6,10 @@ export function formatPaymentMethod(method = '') {
       return 'Karta przy odbiorze';
     case 'blik':
       return 'Blik';
+    case 'payu':
+      return 'PayU';
+    case 'cash':
+      return 'Gotówka';
     case 'gateway':
       return 'Bramka płatności';
     default:
