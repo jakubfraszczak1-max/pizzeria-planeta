@@ -3,7 +3,7 @@ import { formatPrice } from './config.js';
 export function formatPaymentMethod(method = '') {
   switch (method) {
     case 'card':
-      return 'Karta przy odbiorze';
+      return 'Karta';
     case 'blik':
       return 'Blik';
     case 'payu':

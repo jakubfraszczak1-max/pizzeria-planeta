@@ -81,21 +81,42 @@ function togglePaymentField() {
   const paymentGroup = document.getElementById('payment-group');
   if (!paymentGroup) return;
 
-  paymentGroup.style.display = orderType === 'pickup' ? 'block' : 'none';
+  paymentGroup.style.display = 'block';
 
-  if (orderType === 'pickup') {
-    const checkedPayment = document.querySelector('input[name="paymentMethod"]:checked');
-    if (!checkedPayment) {
-      const defaultPayment = document.querySelector('input[name="paymentMethod"][value="card"]');
-      if (defaultPayment) defaultPayment.checked = true;
-    }
+  const label = document.querySelector('#payment-group label[for="payment-method-label"]');
+  if (label) {
+    label.textContent = orderType === 'pickup'
+      ? 'Forma płatności przy odbiorze'
+      : 'Forma płatności przy dostawie';
   }
 
-  if (orderType === 'delivery') {
-    const paymentGroup = document.getElementById('payment-group');
-    if (paymentGroup) {
-      paymentGroup.style.display = 'none';
+  const paymentOptions = document.querySelectorAll('input[name="paymentMethod"]');
+  paymentOptions.forEach(option => {
+    const labelEl = option.closest('label');
+    if (!labelEl) return;
+
+    const text = labelEl.querySelector('span');
+    if (!text) return;
+
+    if (orderType === 'pickup') {
+      if (option.value === 'card') {
+        text.textContent = 'Karta przy odbiorze';
+      } else if (option.value === 'cash') {
+        text.textContent = 'Gotówka przy odbiorze';
+      }
+    } else {
+      if (option.value === 'card') {
+        text.textContent = 'Karta przy dostawie';
+      } else if (option.value === 'cash') {
+        text.textContent = 'Gotówka przy dostawie';
+      }
     }
+  });
+
+  const checkedPayment = document.querySelector('input[name="paymentMethod"]:checked');
+  if (!checkedPayment) {
+    const defaultPayment = document.querySelector('input[name="paymentMethod"][value="card"]');
+    if (defaultPayment) defaultPayment.checked = true;
   }
 }
 
@@ -188,9 +209,7 @@ async function handleSubmit(e) {
     address: orderType === 'delivery' ? form.address.value.trim() : 'Odbiór osobisty',
     notes: form.notes.value.trim(),
     type: orderType,
-    paymentMethod: orderType === 'pickup'
-      ? form.querySelector('input[name="paymentMethod"]:checked')?.value || 'card'
-      : 'delivery',
+    paymentMethod: form.querySelector('input[name="paymentMethod"]:checked')?.value || 'card',
     items: cart,
     totals: getCartTotal(config?.delivery)
   };
