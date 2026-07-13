@@ -24,7 +24,12 @@ export function renderMenu() {
 function renderEvents(events, container) {
   if (!container) return;
   if (!events || events.length === 0) {
-    container.innerHTML = '';
+    container.innerHTML = `
+      <div class="events-wrap">
+        <h3 class="section-title">Wydarzenia</h3>
+        <p style="color:var(--color-text-muted);">Brak nadchodzących wydarzeń. Sprawdź panel administracyjny.</p>
+      </div>
+    `;
     return;
   }
 

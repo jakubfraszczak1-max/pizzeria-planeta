@@ -432,6 +432,7 @@ function openEventsEditor(targetId) {
       <h3>Edytor wydarzeń</h3>
       <div>
         <button class="btn btn-primary" id="add-event-btn">+ Dodaj wydarzenie</button>
+        <button class="btn" id="upload-event-image-btn">📷 Wgraj obraz</button>
         <button class="btn" id="save-events-btn">Zapisz wydarzenia</button>
       </div>
     </div>
@@ -441,6 +442,10 @@ function openEventsEditor(targetId) {
 
   panel.querySelector('#add-event-btn')?.addEventListener('click', () => {
     openEventForm(panel, null);
+  });
+  panel.querySelector('#upload-event-image-btn')?.addEventListener('click', () => {
+    // reuse existing image upload panel in the same editor area
+    openImageUploadPanel(panel.id || 'admin-item-editor');
   });
 
   panel.querySelector('#save-events-btn')?.addEventListener('click', () => {
@@ -480,6 +485,10 @@ function openEventForm(panel, index) {
     <form id="event-form">
       <label style="display:block;margin-bottom:0.5rem;"><span>Tytuł</span><input name="title" value="${ev.title}" required></label>
       <label style="display:block;margin-bottom:0.5rem;"><span>Adres obrazka</span><input name="image" value="${ev.image}"></label>
+      <div style="display:flex;gap:0.5rem;margin-bottom:0.5rem;align-items:center;">
+        <div style="flex:1"></div>
+        <button type="button" class="btn" id="choose-uploaded-image">Wybierz z wgranych</button>
+      </div>
       <label style="display:block;margin-bottom:0.5rem;"><span>Opis</span><textarea name="description">${ev.description}</textarea></label>
       <div style="display:flex;gap:0.5rem;">
         <button class="btn btn-primary" type="submit">Zapisz</button>
@@ -510,6 +519,37 @@ function openEventForm(panel, index) {
 
   editor.querySelector('#cancel-event-btn')?.addEventListener('click', () => {
     editor.innerHTML = '';
+  });
+
+  editor.querySelector('#choose-uploaded-image')?.addEventListener('click', () => {
+    const uploaded = getUploadedImages();
+    if (!uploaded || uploaded.length === 0) {
+      alert('Brak wgranych obrazów. Najpierw użyj przycisku Wgraj obraz.');
+      return;
+    }
+
+    const picker = document.createElement('div');
+    picker.style.display = 'grid';
+    picker.style.gridTemplateColumns = 'repeat(auto-fill,minmax(120px,1fr))';
+    picker.style.gap = '0.5rem';
+    picker.style.marginTop = '0.5rem';
+
+    uploaded.forEach(img => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.style.padding = '0';
+      btn.style.border = '0';
+      btn.style.background = 'transparent';
+      btn.innerHTML = `<img src="${img.url}" alt="${img.name}" style="width:100%;height:80px;object-fit:cover;border-radius:8px;"/>`;
+      btn.addEventListener('click', () => {
+        const input = editor.querySelector('input[name="image"]');
+        if (input) input.value = img.url;
+        picker.remove();
+      });
+      picker.appendChild(btn);
+    });
+
+    editor.appendChild(picker);
   });
 }
 
