@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Płatność - Pizzeria Planeta</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 2rem; background: #111; color: #fff; }
+    .card { max-width: 720px; margin: 0 auto; background: #1a1a1a; padding: 2rem; border-radius: 16px; }
+    code { background: #222; padding: 0.2rem 0.4rem; border-radius: 4px; }
+    button { margin-top: 1rem; padding: 0.8rem 1.2rem; border: 0; border-radius: 8px; background: #ff8c00; color: #111; font-weight: 700; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Przejście do płatności</h1>
+    <p>Ta strona jest miejscem, w którym można podłączyć PayU lub BLIK.</p>
+    <p>Aktualnie działa jako placeholder i zbiera parametry zamówienia z URL.</p>
+    <pre id="params"></pre>
+    <button onclick="window.close()">Zamknij</button>
+  </div>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    document.getElementById('params').textContent = JSON.stringify(Object.fromEntries(params.entries()), null, 2);
+  </script>
+</body>
+</html>

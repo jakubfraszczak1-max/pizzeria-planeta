@@ -10,6 +10,7 @@ import {
 import { getConfig, formatPrice } from './config.js';
 import { sendOrder } from './order.js';
 import { showToast } from './toast.js';
+import { startPayment } from './payment.js';
 
 let orderType = 'delivery';
 
@@ -233,8 +234,17 @@ async function handleSubmit(e) {
   submitBtn.innerHTML = '<span class="spinner"></span> Wysyłanie...';
 
   try {
-    await sendOrder(orderData, config);
-    showToast('Zamówienie wysłane! Dziękujemy!');
+    const paymentMethod = orderData.paymentMethod;
+
+    if (paymentMethod === 'payu' || paymentMethod === 'blik') {
+      await startPayment(orderData, config);
+      await sendOrder(orderData, config);
+      showToast('Przekierowano do płatności. Zamówienie zostało zarejestrowane.');
+    } else {
+      await sendOrder(orderData, config);
+      showToast('Zamówienie wysłane! Dziękujemy!');
+    }
+
     clearCart();
     form.reset();
     orderType = 'delivery';

@@ -49,6 +49,16 @@
     "freeDeliveryFrom": 80,
     "estimatedTime": "45-60 min"
   },
+  "payment": {
+    "payu": {
+      "enabled": false,
+      "redirectUrl": ""
+    },
+    "blik": {
+      "enabled": false,
+      "redirectUrl": ""
+    }
+  },
   "social": {
     "facebook": "",
     "instagram": ""

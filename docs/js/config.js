@@ -75,6 +75,16 @@ const fallbackConfig = {
     deliveryFee: 5,
     freeDeliveryFrom: 80,
     estimatedTime: '45-60 min'
+  },
+  payment: {
+    payu: {
+      enabled: false,
+      redirectUrl: ''
+    },
+    blik: {
+      enabled: false,
+      redirectUrl: ''
+    }
   }
 };
 
