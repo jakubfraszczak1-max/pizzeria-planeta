@@ -1,6 +1,197 @@
 {
   "categories": [
     {
+      "id": "pizza",
+      "name": "Pizza",
+      "icon": "🍕",
+      "items": [
+        {
+          "id": "margherita-40",
+          "name": "Margherita",
+          "description": "Sos pomidorowy, mozzarella, oregano, bazylia",
+          "price": 32,
+          "image": "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=600&q=80",
+          "tags": [
+            "klasyczna"
+          ],
+          "sizes": [
+            {
+              "name": "30 cm",
+              "priceModifier": -8
+            },
+            {
+              "name": "40 cm",
+              "priceModifier": 0
+            },
+            {
+              "name": "50 cm",
+              "priceModifier": 12
+            }
+          ]
+        },
+        {
+          "id": "pepperoni-40",
+          "name": "Pepperoni",
+          "description": "Sos pomidorowy, mozzarella, pepperoni, oregano",
+          "price": 38,
+          "image": "https://images.unsplash.com/photo-1628840042765-356cda07504e?w=600&q=80",
+          "tags": [
+            "pikantna"
+          ],
+          "sizes": [
+            {
+              "name": "30 cm",
+              "priceModifier": -8
+            },
+            {
+              "name": "40 cm",
+              "priceModifier": 0
+            },
+            {
+              "name": "50 cm",
+              "priceModifier": 12
+            }
+          ]
+        },
+        {
+          "id": "hawajska-40",
+          "name": "Hawajska",
+          "description": "Sos pomidorowy, mozzarella, szynka, ananas",
+          "price": 36,
+          "image": "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600&q=80",
+          "tags": [],
+          "sizes": [
+            {
+              "name": "30 cm",
+              "priceModifier": -8
+            },
+            {
+              "name": "40 cm",
+              "priceModifier": 0
+            },
+            {
+              "name": "50 cm",
+              "priceModifier": 12
+            }
+          ]
+        },
+        {
+          "id": "quattro-formaggi-40",
+          "name": "Quattro Formaggi",
+          "description": "Sos śmietanowy, mozzarella, gorgonzola, parmezan, ricotta",
+          "price": 44,
+          "image": "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=600&q=80",
+          "tags": [],
+          "sizes": [
+            {
+              "name": "30 cm",
+              "priceModifier": -8
+            },
+            {
+              "name": "40 cm",
+              "priceModifier": 0
+            },
+            {
+              "name": "50 cm",
+              "priceModifier": 12
+            }
+          ]
+        },
+        {
+          "id": "bolognese-40",
+          "name": "Bolognese",
+          "description": "Sos pomidorowy, mozzarella, mięso mielone, cebula, papryka",
+          "price": 40,
+          "image": "https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?w=600&q=80",
+          "tags": [
+            "bestseller"
+          ],
+          "sizes": [
+            {
+              "name": "30 cm",
+              "priceModifier": -8
+            },
+            {
+              "name": "40 cm",
+              "priceModifier": 0
+            },
+            {
+              "name": "50 cm",
+              "priceModifier": 12
+            }
+          ]
+        },
+        {
+          "id": "carbonara-40",
+          "name": "Carbonara",
+          "description": "Sos śmietanowy, mozzarella, boczek, jajko, parmezan",
+          "price": 42,
+          "image": "https://images.unsplash.com/photo-1604382894740-747abb3801bb?w=600&q=80",
+          "tags": [],
+          "sizes": [
+            {
+              "name": "30 cm",
+              "priceModifier": -8
+            },
+            {
+              "name": "40 cm",
+              "priceModifier": 0
+            },
+            {
+              "name": "50 cm",
+              "priceModifier": 12
+            }
+          ]
+        },
+        {
+          "id": "czerwona-planeta-30",
+          "name": "Czerwona Planeta",
+          "description": "Sos pomidorowy, mozzarella, salami, pieczarki, papryka, cebula",
+          "price": 34,
+          "image": "https://images.unsplash.com/photo-1604382894740-747abb3801bb?w=600&q=80",
+          "tags": [
+            "bestseller"
+          ],
+          "sizes": [
+            {
+              "name": "30 cm",
+              "priceModifier": -8
+            },
+            {
+              "name": "40 cm",
+              "priceModifier": 0
+            },
+            {
+              "name": "50 cm",
+              "priceModifier": 12
+            }
+          ]
+        },
+        {
+          "id": "capricciosa-30",
+          "name": "Capricciosa",
+          "description": "Sos pomidorowy, mozzarella, szynka, pieczarki, karczochy, oliwki",
+          "price": 32,
+          "image": "https://images.unsplash.com/photo-1628840042765-356cda07504e?w=600&q=80",
+          "tags": [],
+          "sizes": [
+            {
+              "name": "30 cm",
+              "priceModifier": -8
+            },
+            {
+              "name": "40 cm",
+              "priceModifier": 0
+            },
+            {
+              "name": "50 cm",
+              "priceModifier": 12
+            }
+          ]
+        }
+      ]
+    },
+    {
       "id": "bestsellery",
       "name": "Bestsellery",
       "icon": "🔥",
@@ -45,102 +236,6 @@
               "priceModifier": 0
             }
           ]
-        }
-      ]
-    },
-    {
-      "id": "pizza-40",
-      "name": "Pizza 40 cm",
-      "icon": "🍕",
-      "items": [
-        {
-          "id": "margherita-40",
-          "name": "Margherita",
-          "description": "Sos pomidorowy, mozzarella, oregano, bazylia",
-          "price": 32,
-          "image": "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=600&q=80",
-          "tags": [
-            "klasyczna"
-          ]
-        },
-        {
-          "id": "pepperoni-40",
-          "name": "Pepperoni",
-          "description": "Sos pomidorowy, mozzarella, pepperoni, oregano",
-          "price": 38,
-          "image": "https://images.unsplash.com/photo-1628840042765-356cda07504e?w=600&q=80",
-          "tags": [
-            "pikantna"
-          ]
-        },
-        {
-          "id": "hawajska-40",
-          "name": "Hawajska",
-          "description": "Sos pomidorowy, mozzarella, szynka, ananas",
-          "price": 36,
-          "image": "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600&q=80",
-          "tags": []
-        },
-        {
-          "id": "quattro-formaggi-40",
-          "name": "Quattro Formaggi",
-          "description": "Sos śmietanowy, mozzarella, gorgonzola, parmezan, ricotta",
-          "price": 44,
-          "image": "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=600&q=80",
-          "tags": []
-        },
-        {
-          "id": "bolognese-40",
-          "name": "Bolognese",
-          "description": "Sos pomidorowy, mozzarella, mięso mielone, cebula, papryka",
-          "price": 40,
-          "image": "https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?w=600&q=80",
-          "tags": [
-            "bestseller"
-          ]
-        },
-        {
-          "id": "carbonara-40",
-          "name": "Carbonara",
-          "description": "Sos śmietanowy, mozzarella, boczek, jajko, parmezan",
-          "price": 42,
-          "image": "https://images.unsplash.com/photo-1604382894740-747abb3801bb?w=600&q=80",
-          "tags": []
-        }
-      ]
-    },
-    {
-      "id": "pizza-30",
-      "name": "Pizza 30 cm",
-      "icon": "🍕",
-      "items": [
-        {
-          "id": "margherita-30",
-          "name": "Margherita",
-          "description": "Sos pomidorowy, mozzarella, oregano, bazylia",
-          "price": 24,
-          "image": "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=600&q=80",
-          "tags": [
-            "klasyczna"
-          ]
-        },
-        {
-          "id": "czerwona-planeta-30",
-          "name": "Czerwona Planeta",
-          "description": "Sos pomidorowy, mozzarella, salami, pieczarki, papryka, cebula",
-          "price": 34,
-          "image": "https://images.unsplash.com/photo-1604382894740-747abb3801bb?w=600&q=80",
-          "tags": [
-            "bestseller"
-          ]
-        },
-        {
-          "id": "capricciosa-30",
-          "name": "Capricciosa",
-          "description": "Sos pomidorowy, mozzarella, szynka, pieczarki, karczochy, oliwki",
-          "price": 32,
-          "image": "https://images.unsplash.com/photo-1628840042765-356cda07504e?w=600&q=80",
-          "tags": []
         }
       ]
     },

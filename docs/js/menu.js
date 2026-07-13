@@ -100,7 +100,7 @@ function renderCategories(categories, container) {
 }
 
 function renderMenuCard(item) {
-  const hasSizes = item.sizes && item.sizes.length > 0;
+  const hasSizes = Array.isArray(item.sizes) && item.sizes.length > 0;
   const defaultSize = hasSizes ? item.sizes[1] || item.sizes[0] : null;
   const price = hasSizes
     ? item.price + (defaultSize?.priceModifier || 0)
