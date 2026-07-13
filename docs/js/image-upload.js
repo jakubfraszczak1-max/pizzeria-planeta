@@ -14,15 +14,27 @@ export function buildImageUploadPath(fileName) {
   return `${DEFAULT_UPLOAD_DIR}/${timestamp}-${safeName}`;
 }
 
+function arrayBufferToBase64(arrayBuffer) {
+  const bytes = new Uint8Array(arrayBuffer);
+  let binary = '';
+  const chunkSize = 0x8000;
+
+  for (let offset = 0; offset < bytes.length; offset += chunkSize) {
+    const chunk = bytes.subarray(offset, offset + chunkSize);
+    binary += String.fromCharCode(...chunk);
+  }
+
+  return typeof btoa === 'function'
+    ? btoa(binary)
+    : Buffer.from(bytes).toString('base64');
+}
+
 export async function uploadImageToGitHub({ file, token, repo, branch, onProgress }) {
   if (!file) throw new Error('Brak pliku');
   if (!token) throw new Error('Brak tokena GitHub');
 
   const path = buildImageUploadPath(file.name);
-  const content = await file.text();
-  const base64Content = typeof btoa === 'function'
-    ? btoa(unescape(encodeURIComponent(content)))
-    : Buffer.from(content).toString('base64');
+  const base64Content = arrayBufferToBase64(await file.arrayBuffer());
 
   const payload = {
     message: `Upload image ${file.name}`,

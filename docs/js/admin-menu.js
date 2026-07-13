@@ -385,7 +385,7 @@ function openImageUploadPanel(targetId) {
     <form data-editor-form="image-upload" class="admin-image-upload-form">
       <label style="display:flex;flex-direction:column;gap:0.35rem;font-weight:600;">
         <span>Wgraj obraz do strony</span>
-        <input type="file" name="imageFile" accept="image/*" required>
+        <input type="file" name="imageFile" accept=".webp,image/webp,image/png,image/jpeg,image/jpg,image/gif,image/svg+xml" required>
       </label>
       <div class="admin-image-upload-form__actions">
         <button class="btn btn-primary" type="submit">Wgraj obraz</button>
