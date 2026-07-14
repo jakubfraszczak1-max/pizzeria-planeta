@@ -239,6 +239,7 @@ function openItemEditor(itemId) {
   ];
 
   const tagsValue = (item.tags || []).join(', ');
+  const isBestseller = (item.tags || []).includes('bestseller');
   const sizesValue = (item.sizes || []).map(size => `${size.name}:${size.priceModifier ?? 0}`).join('\n');
 
   const uploadedImages = getUploadedImages();
@@ -279,6 +280,10 @@ function openItemEditor(itemId) {
           <span>Tagi (oddziel przecinkami)</span>
           <input name="tags" value="${escapeHtml(tagsValue)}" placeholder="bestseller, pikantna">
         </label>
+        <label class="admin-checkbox">
+          <input type="checkbox" name="isBestseller" ${isBestseller ? 'checked' : ''}>
+          Bestseller
+        </label>
         <label>
           <span>Rozmiary (jedna pozycja na linię, format: nazwa:modifikator)</span>
           <textarea name="sizes" placeholder="30 cm:-5\n40 cm:0">${escapeHtml(sizesValue)}</textarea>
@@ -298,10 +303,19 @@ export function saveItemForm(form) {
   const item = findItem(menu, id);
   if (!item) return;
 
-  const tags = form.elements.tags.value
+  let tags = form.elements.tags.value
     .split(',')
     .map(tag => tag.trim())
     .filter(Boolean);
+
+  const isBestseller = form.elements.isBestseller?.checked;
+  if (isBestseller) {
+    if (!tags.includes('bestseller')) {
+      tags.push('bestseller');
+    }
+  } else {
+    tags = tags.filter(tag => tag !== 'bestseller');
+  }
 
   const sizes = form.elements.sizes.value
     .split(/\r?\n/)

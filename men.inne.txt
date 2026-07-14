@@ -1,0 +1,31 @@
+MAKARONY:                500g
+1.SPAGHETTI BOLOGNESE                     32zł           
+MAKARON,SOS BOLOGNESE,PARMEZAN,ZIOŁA
+INNE:
+1.CALZONE                                        50zł
+PIZZA W PIEROGU Z TRZEMA DOWOLNYMI SKŁADNIKAMI,SOS,SER
+2.NUGGETSY W ZESTAWIE                     29zł
+NUGGETSY 6SZT. FRYTKI,KUKURYDZA,SOSY
+3.FOKACCIO                                       33zł
+        BUŁKA NASZEGO WYPIEKU , SURÓWKI,SER,KURCZAK LUB MIELONE,SOSY
+4.KAPSALON                                       33zł
+FRYTKI,MIĘSO KURCZAK/MIELONE ZAPIEKANE W FOREMCE ,SER,SURÓWKA,SOSY
+5.FRYTKI              mała porcja 11zł duża 19zł
+ZAPIEKANKI  50cm :
+Tradycyjna :sos,pieczarki,ser                    20zł
+Podróżnik: sos,ser,pieczarki,szynka                      25zł
+Hawana: sos,ser,kurczak,ananas,kukurydza          28zł
+Diabeł: sos,ser,salami,pieczarki,jalapeno             28zł
+
+Napoje:
+
+Pepsi 0,5l 13zł
+Pepsi max 0,5l 13zł
+Mirinda 0,5l 13zł
+Lipton ice brzoskwinia 0,5l 13zł
+Lipton ice tea cytryna 0,5l 13zł
+Toma nektar z czarnych porzeczek 0,33l 8zł
+Toma sok jabłkowy 0,33l 8zł
+Toma Sok multiwitamina 0,33l 8zł
+Krystaliczne Źródło woda niegazowana 0,5l 7zł
+Krystaliczne Źródło woda gazowana 0,5l 7zł

@@ -90,13 +90,24 @@ function renderCategories(categories, container) {
         <span>${cat.icon}</span> ${cat.name}
       </h3>
       <div class="menu-grid stagger-children">
-        ${cat.items.map(item => renderMenuCard(item)).join('')}
+        ${getCategoryItems(cat, categories).map(item => renderMenuCard(item)).join('')}
       </div>
     </div>
   `).join('');
 
   bindMenuEvents();
   initReveal();
+}
+
+function getCategoryItems(category, categories) {
+  if (category.id === 'bestsellery') {
+    return categories
+      .filter(cat => cat.id !== 'bestsellery')
+      .flatMap(cat => cat.items || [])
+      .filter(item => (item.tags || []).includes('bestseller'));
+  }
+
+  return category.items || [];
 }
 
 function renderMenuCard(item) {

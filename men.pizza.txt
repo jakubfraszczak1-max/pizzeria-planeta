@@ -1,0 +1,51 @@
+MENU
+PIZZA:                                      30cm       40cm     50m
+1.MARGHERITA                                     31zł         43zł      65zł
+sos pizza,ser,oregano
+2.FUNGI                                             35zł         46zł      70zł
+sos pizza,ser,pieczarki,oregano
+3.VESUVIO                                          38zł         49zł      75zł
+sos pizza,ser,salami,oregano
+4.SWOJAK                                          38zł         49zł       75zł
+sos pizza,ser,szynka,oregano
+5.PODRÓŻNIK                                      40zł          55zł      81zł
+sos pizza,ser,pieczarki,szynka,oregano
+6.KOMANDOR                                       44zł         59zł      85zł
+sos pizza,ser,pieczarki,salami,papryka czerwona
+7.SATURN                                           49zł         63zł      95zł
+sos pizza,ser,tuńczyk,cebula,oliwki,kukurydza
+8.HAWANA                                          43zł         60zł      80zł
+sos pizza,ser,szynka,ananas,kukurydza
+9.PIZZA BOLOGNESE                              42zł         54zł      75zł
+sos pizza,ser,mięso mielone,cebula
+10.NAMIESTNIK                                   51zł         69zł      99zł
+sos pizza,ser,papryka,boczek,papryka peperone,kurczak,pomidor
+11.KAPITAŃSKA                                    56zł        70zł      110zł
+sos pizza,ser,tuńczyk,owoce morza,czosnek,parmezan
+12.WEGETARIAŃSKA                              47zł        59zł        79zł
+SOS PIZZA,SER,PIECZARKI,POMIDORY,OLIWKI,RUKOLA,PARMEZAN
+13.CZERWONA PLANETA                          50zł       62zł        95zł
+SOS PIZZA,SER,PIECZARKI,PAPRYKA,KEBAB,POMIDOR,PRZYPRAWA
+14.SACRUM                                         50zł        62zł        95zł
+SOS PIZZA,SER,PIECZARKI,KURCZAK,CEBULA,KUKURYDZA
+15.DROGA MLECZNA                              50zł        62zł        95zł
+SOS PIZZA,SER,SALAMI,BOCZEK,CEBULA,OGÓREK
+16.WŁADCA                                         50zł       62zł        95zl
+SOS PIZZA,SER,MIĘSO MIELONE,BOCZEK,CZERWONA FASOLA,PAPRYKA PEPERONE
+17.GALAKTYKA                                         56zł       69zł     99zł
+SOS PIZZA,SER,SZYNKA,KREWETKI,MAJONEZ,POMIDOR,RUKOLA,PARMEZAN
+18.PEPERONE                                           58zł       69zł     99zl
+SOS PIZZA,BOCZEK,SALAMI,PAPRYKA CZERWONA,JALAPENO,CEBULA,OGÓREK
+19.PLANETA                                            58zł       69zł     99zł
+SOS PIZZA,SER,PIECZARKI,KEBAB,SALAMI,JALAPENO,BOCZEK,CEBULA
+20.PLUTON                                             58zł       69zł     99zl
+SOS PIZZA,PIECZARKI,KIEŁBASA CHORIZO,SALAMI,POMIDOR,CEBULA,SER PLEŚNIOWY,KAPARY,RUKOLA
+21.GWIAZDA ŚMIERCI                               58zł      69zł      99zł
+SOS PIZZA,SER,PIECZARKI,SALAMI,KIEŁBASA CHORIZO,JALAPENO,CHILLI,TABASKO,MOZZARELLA,KAPARY
+22.CZTERY SERY                                       55zł      69zł     90zł
+sos pizza  ,cztery sery do wyboru
+23.PIZZA ZIELONA                       58zł      69zł     99zł
+pesto bazyliowe , mozzarella, szynka dojrzewająca,pomidorki,feta,rukola,oregano
+24.PIZZA BURATTA                                   60zł
+SOS Z POMIDORÓW,SER,SZYNKA DOJRZEWAJĄCA,BURATTA,POMIDORKI KOKTAJOWE,RUKOLA
+

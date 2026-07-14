@@ -1,240 +1,357 @@
 {
   "categories": [
     {
+      "id": "bestsellery",
+      "name": "Bestsellery",
+      "icon": "🔥",
+      "items": []
+    },
+    {
       "id": "pizza",
       "name": "Pizza",
       "icon": "🍕",
       "items": [
         {
-          "id": "margherita-40",
+          "id": "margherita",
           "name": "Margherita",
-          "description": "Sos pomidorowy, mozzarella, oregano, bazylia",
-          "price": 32,
-          "image": "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=600&q=80",
-          "tags": [
-            "klasyczna"
-          ],
+          "description": "Sos pizza, ser, oregano",
+          "price": 43,
+          "tags": ["klasyczna"],
           "sizes": [
-            {
-              "name": "30 cm",
-              "priceModifier": -8
-            },
-            {
-              "name": "40 cm",
-              "priceModifier": 0
-            },
-            {
-              "name": "50 cm",
-              "priceModifier": 12
-            }
+            { "name": "30 cm", "priceModifier": -12 },
+            { "name": "40 cm", "priceModifier": 0 },
+            { "name": "50 cm", "priceModifier": 22 }
           ]
         },
         {
-          "id": "pepperoni-40",
-          "name": "Pepperoni",
-          "description": "Sos pomidorowy, mozzarella, pepperoni, oregano",
-          "price": 38,
-          "image": "https://images.unsplash.com/photo-1628840042765-356cda07504e?w=600&q=80",
-          "tags": [
-            "pikantna"
-          ],
+          "id": "fungi",
+          "name": "Fungi",
+          "description": "Sos pizza, ser, pieczarki, oregano",
+          "price": 46,
+          "tags": ["klasyczna"],
           "sizes": [
-            {
-              "name": "30 cm",
-              "priceModifier": -8
-            },
-            {
-              "name": "40 cm",
-              "priceModifier": 0
-            },
-            {
-              "name": "50 cm",
-              "priceModifier": 12
-            }
+            { "name": "30 cm", "priceModifier": -11 },
+            { "name": "40 cm", "priceModifier": 0 },
+            { "name": "50 cm", "priceModifier": 24 }
           ]
         },
         {
-          "id": "hawajska-40",
-          "name": "Hawajska",
-          "description": "Sos pomidorowy, mozzarella, szynka, ananas",
-          "price": 36,
-          "image": "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600&q=80",
+          "id": "vesuvio",
+          "name": "Vesuvio",
+          "description": "Sos pizza, ser, salami, oregano",
+          "price": 49,
+          "tags": ["klasyczna"],
+          "sizes": [
+            { "name": "30 cm", "priceModifier": -11 },
+            { "name": "40 cm", "priceModifier": 0 },
+            { "name": "50 cm", "priceModifier": 26 }
+          ]
+        },
+        {
+          "id": "swojak",
+          "name": "Swojak",
+          "description": "Sos pizza, ser, szynka, oregano",
+          "price": 49,
+          "tags": ["klasyczna"],
+          "sizes": [
+            { "name": "30 cm", "priceModifier": -11 },
+            { "name": "40 cm", "priceModifier": 0 },
+            { "name": "50 cm", "priceModifier": 26 }
+          ]
+        },
+        {
+          "id": "podroznik",
+          "name": "Podróżnik",
+          "description": "Sos pizza, ser, pieczarki, szynka, oregano",
+          "price": 55,
           "tags": [],
           "sizes": [
-            {
-              "name": "30 cm",
-              "priceModifier": -8
-            },
-            {
-              "name": "40 cm",
-              "priceModifier": 0
-            },
-            {
-              "name": "50 cm",
-              "priceModifier": 12
-            }
+            { "name": "30 cm", "priceModifier": -15 },
+            { "name": "40 cm", "priceModifier": 0 },
+            { "name": "50 cm", "priceModifier": 26 }
           ]
         },
         {
-          "id": "quattro-formaggi-40",
-          "name": "Quattro Formaggi",
-          "description": "Sos śmietanowy, mozzarella, gorgonzola, parmezan, ricotta",
-          "price": 44,
-          "image": "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=600&q=80",
+          "id": "komandor",
+          "name": "Komandor",
+          "description": "Sos pizza, ser, pieczarki, salami, papryka czerwona",
+          "price": 59,
+          "tags": ["pikantna"],
+          "sizes": [
+            { "name": "30 cm", "priceModifier": -15 },
+            { "name": "40 cm", "priceModifier": 0 },
+            { "name": "50 cm", "priceModifier": 26 }
+          ]
+        },
+        {
+          "id": "saturn",
+          "name": "Saturn",
+          "description": "Sos pizza, ser, tuńczyk, cebula, oliwki, kukurydza",
+          "price": 63,
+          "tags": ["pikantna"],
+          "sizes": [
+            { "name": "30 cm", "priceModifier": -14 },
+            { "name": "40 cm", "priceModifier": 0 },
+            { "name": "50 cm", "priceModifier": 32 }
+          ]
+        },
+        {
+          "id": "hawana",
+          "name": "Hawana",
+          "description": "Sos pizza, ser, szynka, ananas, kukurydza",
+          "price": 60,
           "tags": [],
           "sizes": [
-            {
-              "name": "30 cm",
-              "priceModifier": -8
-            },
-            {
-              "name": "40 cm",
-              "priceModifier": 0
-            },
-            {
-              "name": "50 cm",
-              "priceModifier": 12
-            }
+            { "name": "30 cm", "priceModifier": -17 },
+            { "name": "40 cm", "priceModifier": 0 },
+            { "name": "50 cm", "priceModifier": 20 }
           ]
         },
         {
-          "id": "bolognese-40",
-          "name": "Bolognese",
-          "description": "Sos pomidorowy, mozzarella, mięso mielone, cebula, papryka",
-          "price": 40,
-          "image": "https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?w=600&q=80",
-          "tags": [
-            "bestseller"
-          ],
-          "sizes": [
-            {
-              "name": "30 cm",
-              "priceModifier": -8
-            },
-            {
-              "name": "40 cm",
-              "priceModifier": 0
-            },
-            {
-              "name": "50 cm",
-              "priceModifier": 12
-            }
-          ]
-        },
-        {
-          "id": "carbonara-40",
-          "name": "Carbonara",
-          "description": "Sos śmietanowy, mozzarella, boczek, jajko, parmezan",
-          "price": 42,
-          "image": "https://images.unsplash.com/photo-1604382894740-747abb3801bb?w=600&q=80",
+          "id": "pizza-bolognese",
+          "name": "Pizza Bolognese",
+          "description": "Sos pizza, ser, mięso mielone, cebula",
+          "price": 54,
           "tags": [],
           "sizes": [
-            {
-              "name": "30 cm",
-              "priceModifier": -8
-            },
-            {
-              "name": "40 cm",
-              "priceModifier": 0
-            },
-            {
-              "name": "50 cm",
-              "priceModifier": 12
-            }
+            { "name": "30 cm", "priceModifier": -12 },
+            { "name": "40 cm", "priceModifier": 0 },
+            { "name": "50 cm", "priceModifier": 21 }
           ]
         },
         {
-          "id": "czerwona-planeta-30",
+          "id": "namiestnik",
+          "name": "Namiestnik",
+          "description": "Sos pizza, ser, papryka, boczek, papryka peperone, kurczak, pomidor",
+          "price": 69,
+          "tags": [],
+          "sizes": [
+            { "name": "30 cm", "priceModifier": -18 },
+            { "name": "40 cm", "priceModifier": 0 },
+            { "name": "50 cm", "priceModifier": 30 }
+          ]
+        },
+        {
+          "id": "kapitanska",
+          "name": "Kapitańska",
+          "description": "Sos pizza, ser, tuńczyk, owoce morza, czosnek, parmezan",
+          "price": 70,
+          "tags": [],
+          "sizes": [
+            { "name": "30 cm", "priceModifier": -14 },
+            { "name": "40 cm", "priceModifier": 0 },
+            { "name": "50 cm", "priceModifier": 40 }
+          ]
+        },
+        {
+          "id": "wegetarianska",
+          "name": "Wegetariańska",
+          "description": "Sos pizza, ser, pieczarki, pomidory, oliwki, rukola, parmezan",
+          "price": 59,
+          "tags": ["wegetarianska"],
+          "sizes": [
+            { "name": "30 cm", "priceModifier": -12 },
+            { "name": "40 cm", "priceModifier": 0 },
+            { "name": "50 cm", "priceModifier": 20 }
+          ]
+        },
+        {
+          "id": "czerwona-planeta",
           "name": "Czerwona Planeta",
-          "description": "Sos pomidorowy, mozzarella, salami, pieczarki, papryka, cebula",
-          "price": 34,
-          "image": "https://images.unsplash.com/photo-1604382894740-747abb3801bb?w=600&q=80",
-          "tags": [
-            "bestseller"
-          ],
+          "description": "Sos pizza, ser, pieczarki, papryka, kebab, pomidor, przyprawa",
+          "price": 62,
+          "tags": ["bestseller", "pikantna"],
           "sizes": [
-            {
-              "name": "30 cm",
-              "priceModifier": -8
-            },
-            {
-              "name": "40 cm",
-              "priceModifier": 0
-            },
-            {
-              "name": "50 cm",
-              "priceModifier": 12
-            }
+            { "name": "30 cm", "priceModifier": -12 },
+            { "name": "40 cm", "priceModifier": 0 },
+            { "name": "50 cm", "priceModifier": 33 }
           ]
         },
         {
-          "id": "capricciosa-30",
-          "name": "Capricciosa",
-          "description": "Sos pomidorowy, mozzarella, szynka, pieczarki, karczochy, oliwki",
-          "price": 32,
-          "image": "https://images.unsplash.com/photo-1628840042765-356cda07504e?w=600&q=80",
+          "id": "sacrum",
+          "name": "Sacrum",
+          "description": "Sos pizza, ser, pieczarki, kurczak, cebula, kukurydza",
+          "price": 62,
           "tags": [],
           "sizes": [
-            {
-              "name": "30 cm",
-              "priceModifier": -8
-            },
-            {
-              "name": "40 cm",
-              "priceModifier": 0
-            },
-            {
-              "name": "50 cm",
-              "priceModifier": 12
-            }
+            { "name": "30 cm", "priceModifier": -12 },
+            { "name": "40 cm", "priceModifier": 0 },
+            { "name": "50 cm", "priceModifier": 33 }
           ]
+        },
+        {
+          "id": "droga-mleczna",
+          "name": "Droga Mleczna",
+          "description": "Sos pizza, ser, salami, boczek, cebula, ogórek",
+          "price": 62,
+          "tags": [],
+          "sizes": [
+            { "name": "30 cm", "priceModifier": -12 },
+            { "name": "40 cm", "priceModifier": 0 },
+            { "name": "50 cm", "priceModifier": 33 }
+          ]
+        },
+        {
+          "id": "wlada",
+          "name": "Władca",
+          "description": "Sos pizza, ser, mięso mielone, boczek, czerwona fasola, papryka peperone",
+          "price": 62,
+          "tags": ["pikantna"],
+          "sizes": [
+            { "name": "30 cm", "priceModifier": -12 },
+            { "name": "40 cm", "priceModifier": 0 },
+            { "name": "50 cm", "priceModifier": 33 }
+          ]
+        },
+        {
+          "id": "galaktyka",
+          "name": "Galaktyka",
+          "description": "Sos pizza, ser, szynka, krewetki, majonez, pomidor, rukola, parmezan",
+          "price": 69,
+          "tags": [],
+          "sizes": [
+            { "name": "30 cm", "priceModifier": -13 },
+            { "name": "40 cm", "priceModifier": 0 },
+            { "name": "50 cm", "priceModifier": 30 }
+          ]
+        },
+        {
+          "id": "peperone",
+          "name": "Peperone",
+          "description": "Sos pizza, boczek, salami, papryka czerwona, jalapeno, cebula, ogórek",
+          "price": 69,
+          "tags": ["pikantna"],
+          "sizes": [
+            { "name": "30 cm", "priceModifier": -11 },
+            { "name": "40 cm", "priceModifier": 0 },
+            { "name": "50 cm", "priceModifier": 30 }
+          ]
+        },
+        {
+          "id": "planeta",
+          "name": "Planeta",
+          "description": "Sos pizza, ser, pieczarki, kebab, salami, jalapeno, boczek, cebula",
+          "price": 69,
+          "tags": [],
+          "sizes": [
+            { "name": "30 cm", "priceModifier": -11 },
+            { "name": "40 cm", "priceModifier": 0 },
+            { "name": "50 cm", "priceModifier": 30 }
+          ]
+        },
+        {
+          "id": "pluton",
+          "name": "Pluton",
+          "description": "Sos pizza, pieczarki, kiełbasa chorizo, salami, pomidor, cebula, ser pleśniowy, kapary, rukola",
+          "price": 69,
+          "tags": [],
+          "sizes": [
+            { "name": "30 cm", "priceModifier": -11 },
+            { "name": "40 cm", "priceModifier": 0 },
+            { "name": "50 cm", "priceModifier": 30 }
+          ]
+        },
+        {
+          "id": "gwiazda-smierci",
+          "name": "Gwiazda Śmierci",
+          "description": "Sos pizza, ser, pieczarki, salami, kiełbasa chorizo, jalapeno, chilli, tabasko, mozzarella, kapary",
+          "price": 69,
+          "tags": ["pikantna"],
+          "sizes": [
+            { "name": "30 cm", "priceModifier": -11 },
+            { "name": "40 cm", "priceModifier": 0 },
+            { "name": "50 cm", "priceModifier": 30 }
+          ]
+        },
+        {
+          "id": "cztery-sery",
+          "name": "Cztery Sery",
+          "description": "Sos pizza, cztery sery do wyboru",
+          "price": 69,
+          "tags": ["klasyczna"],
+          "sizes": [
+            { "name": "30 cm", "priceModifier": -14 },
+            { "name": "40 cm", "priceModifier": 0 },
+            { "name": "50 cm", "priceModifier": 21 }
+          ]
+        },
+        {
+          "id": "pizza-zielona",
+          "name": "Pizza Zielona",
+          "description": "Pesto bazyliowe, mozzarella, szynka dojrzewająca, pomidorki, feta, rukola, oregano",
+          "price": 69,
+          "tags": ["bestseller", "wegetarianska"],
+          "sizes": [
+            { "name": "30 cm", "priceModifier": -11 },
+            { "name": "40 cm", "priceModifier": 0 },
+            { "name": "50 cm", "priceModifier": 30 }
+          ]
+        },
+        {
+          "id": "pizza-buratta",
+          "name": "Pizza Buratta",
+          "description": "Sos z pomidorów, ser, szynka dojrzewająca, buratta, pomidorki koktajlowe, rukola",
+          "price": 60,
+          "tags": ["klasyczna"]
         }
       ]
     },
     {
-      "id": "bestsellery",
-      "name": "Bestsellery",
-      "icon": "🔥",
+      "id": "makarony",
+      "name": "Makarony",
+      "icon": "🍝",
       "items": [
         {
-          "id": "czerwona-planeta-40",
-          "name": "Czerwona Planeta",
-          "description": "Sos pomidorowy, mozzarella, salami, pieczarki, papryka, cebula",
-          "price": 42,
-          "image": "https://images.unsplash.com/photo-1604382894740-747abb3801bb?w=600&q=80",
-          "tags": [
-            "bestseller",
-            "pikantna"
-          ],
-          "sizes": [
-            {
-              "name": "30 cm",
-              "priceModifier": -8
-            },
-            {
-              "name": "40 cm",
-              "priceModifier": 0
-            }
-          ]
+          "id": "spaghetti-bolognese",
+          "name": "Spaghetti Bolognese",
+          "description": "Makaron, sos bolognese, parmezan, zioła",
+          "price": 32,
+          "tags": []
+        }
+      ]
+    },
+    {
+      "id": "inne",
+      "name": "Inne",
+      "icon": "🍽️",
+      "items": [
+        {
+          "id": "calzone",
+          "name": "Calzone",
+          "description": "Pizza w pierogu z trzema dowolnymi składnikami, sos, ser",
+          "price": 50,
+          "tags": []
         },
         {
-          "id": "zielona-planeta-40",
-          "name": "Zielona Planeta",
-          "description": "Sos pomidorowy, mozzarella, szpinak, brokuły, kukurydza, oliwki",
-          "price": 40,
-          "image": "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=600&q=80",
-          "tags": [
-            "wegetarianska"
-          ],
+          "id": "nuggetsy",
+          "name": "Nuggetsy w zestawie",
+          "description": "Nuggetsy 6 szt., frytki, kukurydza, sosy",
+          "price": 29,
+          "tags": []
+        },
+        {
+          "id": "fokaccio",
+          "name": "Fokaccio",
+          "description": "Bułka naszego wypieku, surówki, ser, kurczak lub mielone, sosy",
+          "price": 33,
+          "tags": []
+        },
+        {
+          "id": "kapsalon",
+          "name": "Kapsalon",
+          "description": "Frytki, mięso kurczak/mielone zapiekane w foremce, ser, surówka, sosy",
+          "price": 33,
+          "tags": []
+        },
+        {
+          "id": "frytki",
+          "name": "Frytki",
+          "description": "Frytki podawane w małej lub dużej porcji",
+          "price": 11,
+          "tags": [],
           "sizes": [
-            {
-              "name": "30 cm",
-              "priceModifier": -7
-            },
-            {
-              "name": "40 cm",
-              "priceModifier": 0
-            }
+            { "name": "mała", "priceModifier": 0 },
+            { "name": "duża", "priceModifier": 8 }
           ]
         }
       ]
@@ -245,32 +362,32 @@
       "icon": "🥖",
       "items": [
         {
-          "id": "zapiekanka-klasyczna",
-          "name": "Zapiekanka Klasyczna",
-          "description": "Pieczarki, ser, ketchup, chrupiąca bułka",
-          "price": 14,
-          "image": "https://images.unsplash.com/photo-1617093727343-374698b1b08d?w=600&q=80",
-          "tags": [
-            "bestseller"
-          ]
-        },
-        {
-          "id": "zapiekanka-mix",
-          "name": "Zapiekanka Mix",
-          "description": "Pieczarki, salami, ser, papryka, ketchup",
-          "price": 18,
-          "image": "https://images.unsplash.com/photo-1617093727343-374698b1b08d?w=600&q=80",
+          "id": "zapiekanka-tradycyjna",
+          "name": "Tradycyjna Zapiekanka",
+          "description": "Sos, pieczarki, ser",
+          "price": 20,
           "tags": []
         },
         {
-          "id": "zapiekanka-xxl",
-          "name": "Zapiekanka XXL 55 cm",
-          "description": "Mega zapiekanka na 2-3 osoby, mix składników",
-          "price": 35,
-          "image": "https://images.unsplash.com/photo-1617093727343-374698b1b08d?w=600&q=80",
-          "tags": [
-            "xxl"
-          ]
+          "id": "zapiekanka-podroznik",
+          "name": "Zapiekanka Podróżnik",
+          "description": "Sos, ser, pieczarki, szynka",
+          "price": 25,
+          "tags": []
+        },
+        {
+          "id": "zapiekanka-hawana",
+          "name": "Zapiekanka Hawana",
+          "description": "Sos, ser, kurczak, ananas, kukurydza",
+          "price": 28,
+          "tags": []
+        },
+        {
+          "id": "zapiekanka-diabel",
+          "name": "Zapiekanka Diabeł",
+          "description": "Sos, ser, salami, pieczarki, jalapeno",
+          "price": 28,
+          "tags": []
         }
       ]
     },
@@ -284,7 +401,6 @@
           "name": "Sałatka z Kurczakiem",
           "description": "Mix sałat, grillowany kurczak, pomidory, ogórek, sos winegret",
           "price": 26,
-          "image": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600&q=80",
           "tags": []
         },
         {
@@ -292,10 +408,7 @@
           "name": "Sałatka Grecka",
           "description": "Pomidory, ogórek, oliwki, feta, cebula, oregano",
           "price": 22,
-          "image": "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=600&q=80",
-          "tags": [
-            "wegetarianska"
-          ]
+          "tags": ["wegetarianska"]
         }
       ]
     },
@@ -309,7 +422,6 @@
           "name": "Sos Czosnkowy",
           "description": "Domowy sos czosnkowy",
           "price": 4,
-          "image": "https://images.unsplash.com/photo-1472476442907-faafcbb36ab5?w=600&q=80",
           "tags": []
         },
         {
@@ -317,17 +429,13 @@
           "name": "Sos Chili",
           "description": "Pikantny sos chili",
           "price": 4,
-          "image": "https://images.unsplash.com/photo-1472476442907-faafcbb36ab5?w=600&q=80",
-          "tags": [
-            "pikantna"
-          ]
+          "tags": ["pikantna"]
         },
         {
           "id": "sos-ketchup",
           "name": "Ketchup",
           "description": "Ketchup",
           "price": 3,
-          "image": "https://images.unsplash.com/photo-1472476442907-faafcbb36ab5?w=600&q=80",
           "tags": []
         }
       ]
@@ -338,36 +446,73 @@
       "icon": "🥤",
       "items": [
         {
-          "id": "coca-cola-05",
-          "name": "Coca-Cola 0,5L",
+          "id": "pepsi-05",
+          "name": "Pepsi 0,5l",
           "description": "",
-          "price": 7,
-          "image": "https://images.unsplash.com/photo-1554866585-cd94860890b7?w=600&q=80",
+          "price": 13,
           "tags": []
         },
         {
-          "id": "sprite-05",
-          "name": "Sprite 0,5L",
+          "id": "pepsi-max-05",
+          "name": "Pepsi Max 0,5l",
           "description": "",
-          "price": 7,
-          "image": "https://raw.githubusercontent.com/jakubfraszczak1-max/pizzeria-planeta/main/docs/assets/uploads/1783927414590-sprite0.5l.jpg",
-          "tags": [],
-          "sizes": []
-        },
-        {
-          "id": "woda-05",
-          "name": "Woda Mineralna 0,5L",
-          "description": "",
-          "price": 5,
-          "image": "https://images.unsplash.com/photo-1548839140-29a7492991cf?w=600&q=80",
+          "price": 13,
           "tags": []
         },
         {
-          "id": "sok-pomaranczowy",
-          "name": "Sok Pomarańczowy 0,33L",
+          "id": "mirinda-05",
+          "name": "Mirinda 0,5l",
           "description": "",
-          "price": 6,
-          "image": "https://images.unsplash.com/photo-1621506289937-a8e4df240d0e?w=600&q=80",
+          "price": 13,
+          "tags": []
+        },
+        {
+          "id": "lipton-brzoskwinia-05",
+          "name": "Lipton Ice Brzoskwinia 0,5l",
+          "description": "",
+          "price": 13,
+          "tags": []
+        },
+        {
+          "id": "lipton-cytryna-05",
+          "name": "Lipton Ice Tea Cytryna 0,5l",
+          "description": "",
+          "price": 13,
+          "tags": []
+        },
+        {
+          "id": "toma-porzeczki-033",
+          "name": "Toma Nektar z Czarnych Porzeczek 0,33l",
+          "description": "",
+          "price": 8,
+          "tags": []
+        },
+        {
+          "id": "toma-jablkowy-033",
+          "name": "Toma Sok Jabłkowy 0,33l",
+          "description": "",
+          "price": 8,
+          "tags": []
+        },
+        {
+          "id": "toma-multiwitamina-033",
+          "name": "Toma Sok Multiwitamina 0,33l",
+          "description": "",
+          "price": 8,
+          "tags": []
+        },
+        {
+          "id": "woda-krystaliczne-zrodlo-niegazowana-05",
+          "name": "Krystaliczne Źródło woda niegazowana 0,5l",
+          "description": "",
+          "price": 7,
+          "tags": []
+        },
+        {
+          "id": "woda-krystaliczne-zrodlo-gazowana-05",
+          "name": "Krystaliczne Źródło woda gazowana 0,5l",
+          "description": "",
+          "price": 7,
           "tags": []
         }
       ]
