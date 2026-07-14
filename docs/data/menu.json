@@ -503,11 +503,22 @@
           "name": "Pizza Buratta",
           "description": "Sos z pomidorów, ser, szynka dojrzewająca, buratta, pomidorki koktajlowe, rukola",
           "price": 60,
-          "tags": ["klasyczna"],
+          "tags": [
+            "klasyczna"
+          ],
           "sizes": [
-            { "name": "30 cm", "priceModifier": -14 },
-            { "name": "40 cm", "priceModifier": 0 },
-            { "name": "50 cm", "priceModifier": 20 }
+            {
+              "name": "30 cm",
+              "priceModifier": -14
+            },
+            {
+              "name": "40 cm",
+              "priceModifier": 0
+            },
+            {
+              "name": "50 cm",
+              "priceModifier": 20
+            }
           ]
         }
       ]
