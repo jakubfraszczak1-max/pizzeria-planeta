@@ -4,6 +4,34 @@ import { showToast } from './toast.js';
 
 let activeCategory = 'all';
 const selectedSizes = {};
+let currentPromotionPercent = 0;
+
+function isPromotionActive(promo) {
+  if (!promo || !promo.enabled) return false;
+  try {
+    const now = new Date();
+    const dayMap = ['sun','mon','tue','wed','thu','fri','sat'];
+    const today = dayMap[now.getDay()];
+    if (!promo.days || !promo.days.includes(today)) return false;
+
+    const [startH, startM] = (promo.start || '00:00').split(':').map(Number);
+    const [endH, endM] = (promo.end || '23:59').split(':').map(Number);
+    const start = new Date(now);
+    start.setHours(startH, startM, 0, 0);
+    const end = new Date(now);
+    end.setHours(endH, endM, 0, 0);
+
+    if (end < start) { // overnight promotion
+      if (now >= start) return true;
+      if (now <= end) return true;
+      return false;
+    }
+
+    return now >= start && now <= end;
+  } catch (err) {
+    return false;
+  }
+}
 
 export function renderMenu() {
   const menu = getMenu();
@@ -14,6 +42,8 @@ export function renderMenu() {
 
   const cfg = getConfig();
   const events = Array.isArray(cfg?.events) ? cfg.events : [];
+  const promo = cfg?.promotions || null;
+  currentPromotionPercent = promo && isPromotionActive(promo) ? Number(promo.percent || 0) : 0;
 
   renderEvents(events, document.getElementById('events-section'));
 
@@ -113,9 +143,12 @@ function getCategoryItems(category, categories) {
 function renderMenuCard(item) {
   const hasSizes = Array.isArray(item.sizes) && item.sizes.length > 0;
   const defaultSize = hasSizes ? item.sizes[1] || item.sizes[0] : null;
-  const price = hasSizes
+  const basePrice = hasSizes
     ? item.price + (defaultSize?.priceModifier || 0)
     : item.price;
+  const price = currentPromotionPercent > 0
+    ? Math.round((basePrice * (1 - currentPromotionPercent / 100)) * 100) / 100
+    : basePrice;
 
   const sizesHtml = hasSizes ? `
     <div class="menu-card__sizes" data-item-id="${item.id}">
@@ -168,7 +201,10 @@ function bindMenuEvents() {
       const card = e.target.closest('.menu-card');
       const basePrice = parseFloat(card.querySelector('.menu-card__price').dataset.basePrice);
       const modifier = parseFloat(e.target.dataset.modifier);
-      const newPrice = basePrice + modifier;
+      let newPrice = basePrice + modifier;
+      if (currentPromotionPercent > 0) {
+        newPrice = Math.round((newPrice * (1 - currentPromotionPercent / 100)) * 100) / 100;
+      }
 
       sizesContainer.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
       e.target.classList.add('active');

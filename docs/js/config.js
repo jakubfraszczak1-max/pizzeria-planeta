@@ -95,6 +95,14 @@ fallbackConfig.events = [
     description: 'Dołącz do naszego turnieju darta w każdą sobotę o 19:00. Nagrody i świetna zabawa!'
   }
 ];
+    // promotions default
+    fallbackConfig.promotions = {
+      enabled: false,
+      days: [],
+      start: '00:00',
+      end: '23:59',
+      percent: 0
+    };
 
 const fallbackMenu = {
   categories: [

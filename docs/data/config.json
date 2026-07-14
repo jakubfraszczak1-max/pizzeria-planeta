@@ -59,6 +59,13 @@
       "redirectUrl": ""
     }
   },
+  "promotions": {
+    "enabled": false,
+    "days": [],
+    "start": "00:00",
+    "end": "23:59",
+    "percent": 0
+  },
   "events": [
     {
       "title": "Turniej darta",

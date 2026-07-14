@@ -36,6 +36,13 @@ export async function initAdminMenuEditor() {
       openEventsEditor(eventsBtn.dataset.target || 'admin-item-editor');
       return;
     }
+    const promosBtn = target.closest('[data-action="edit-promotions"]');
+    if (promosBtn) {
+      e.preventDefault();
+      e.stopPropagation();
+      openPromotionsEditor(promosBtn.dataset.target || 'admin-item-editor');
+      return;
+    }
 
     const addBtn = target.closest('[data-action="add-item"]');
     if (addBtn) {
@@ -106,6 +113,7 @@ export function buildAdminMenuEditorMarkup(menu) {
         <button class="btn btn-primary" type="button" data-action="add-category">+ Dodaj kategorię</button>
           <button class="btn btn-primary" type="button" data-action="upload-image" data-target="admin-item-editor">📷 Wgraj obraz</button>
           <button class="btn btn-primary" type="button" data-action="edit-events" data-target="admin-item-editor">🎫 Wydarzenia</button>
+          <button class="btn btn-primary" type="button" data-action="edit-promotions" data-target="admin-item-editor">% Promocje</button>
       </div>
     </div>
     ${safeMenu.categories.map(category => `
@@ -308,13 +316,14 @@ export function saveItemForm(form) {
     .map(tag => tag.trim())
     .filter(Boolean);
 
-  const isBestseller = form.elements.isBestseller?.checked;
-  if (isBestseller) {
-    if (!tags.includes('bestseller')) {
-      tags.push('bestseller');
+  const hasBestsellerCheckbox = typeof form.elements.isBestseller !== 'undefined';
+  const isBestseller = hasBestsellerCheckbox ? !!form.elements.isBestseller.checked : null;
+  if (hasBestsellerCheckbox) {
+    if (isBestseller) {
+      if (!tags.includes('bestseller')) tags.push('bestseller');
+    } else {
+      tags = tags.filter(tag => tag !== 'bestseller');
     }
-  } else {
-    tags = tags.filter(tag => tag !== 'bestseller');
   }
 
   const sizes = form.elements.sizes.value
@@ -407,6 +416,71 @@ function getSavedEvents() {
     console.warn('Nie udało się odczytać wydarzeń:', err);
     return [];
   }
+}
+
+function getSavedPromotions() {
+  try {
+    const cfg = getConfig();
+    return cfg?.promotions || { enabled: false, days: [], start: '00:00', end: '23:59', percent: 0 };
+  } catch (err) {
+    console.warn('Nie udało się odczytać promocji:', err);
+    return { enabled: false, days: [], start: '00:00', end: '23:59', percent: 0 };
+  }
+}
+
+function savePromotions(promotions) {
+  try {
+    const cfg = getConfig() || {};
+    const newSite = { ...cfg, promotions };
+    setConfigOverrides({ site: newSite });
+    return true;
+  } catch (err) {
+    console.error('Nie udało się zapisać promocji:', err);
+    return false;
+  }
+}
+
+function openPromotionsEditor(targetId) {
+  const panel = document.getElementById(targetId || 'admin-item-editor');
+  if (!panel) return;
+
+  const promo = getSavedPromotions();
+  const days = ['mon','tue','wed','thu','fri','sat','sun'];
+  const dayLabels = { mon: 'Pn', tue: 'Wt', wed: 'Śr', thu: 'Cz', fri: 'Pt', sat: 'Sob', sun: 'Nd' };
+
+  panel.innerHTML = `
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:0.5rem;margin-bottom:0.75rem;">
+      <h3>Ustawienia promocji</h3>
+      <div>
+        <button class="btn btn-primary" id="save-promotions-btn">Zapisz promocję</button>
+      </div>
+    </div>
+    <form id="promotions-form">
+      <label style="display:block;margin-bottom:0.5rem;"><input type="checkbox" name="enabled" ${promo.enabled ? 'checked' : ''}> Aktywna</label>
+      <div style="display:flex;gap:0.5rem;margin-bottom:0.5rem;align-items:center;">
+        ${days.map(d => `<label style="display:flex;align-items:center;gap:0.25rem;"><input type=\"checkbox\" name=\"days\" value=\"${d}\" ${promo.days.includes(d) ? 'checked' : ''}>${dayLabels[d]}</label>`).join('')}
+      </div>
+      <div style="display:flex;gap:0.5rem;margin-bottom:0.5rem;align-items:center;">
+        <label>Start: <input type="time" name="start" value="${promo.start}"></label>
+        <label>Koniec: <input type="time" name="end" value="${promo.end}"></label>
+        <label>Procent: <input type="number" name="percent" min="0" max="100" value="${promo.percent}">%</label>
+      </div>
+    </form>
+  `;
+
+  panel.querySelector('#save-promotions-btn')?.addEventListener('click', () => {
+    const form = panel.querySelector('#promotions-form');
+    const enabled = !!form.elements.enabled.checked;
+    const percent = Number(form.elements.percent.value) || 0;
+    const start = form.elements.start.value || '00:00';
+    const end = form.elements.end.value || '23:59';
+    const selectedDays = Array.from(form.querySelectorAll('input[name="days"]:checked')).map(i => i.value);
+
+    const newPromo = { enabled, days: selectedDays, start, end, percent };
+    savePromotions(newPromo);
+    alert('Promocja zapisana.');
+    openPromotionsEditor(targetId);
+  });
 }
 
 function saveEvents(events) {
